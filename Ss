@@ -1,0 +1,43 @@
+cart = []  # Initialize an empty list to represent the shopping cart (stack)
+
+def add_to_cart():
+    item = input("Enter the item to add to the cart: ")
+    price = float(input("Enter the price of the item: "))
+    cart.append((item, price))
+    print(item, "added to cart")
+
+def remove_from_cart():
+    if not cart:
+        print("Your cart is empty")
+    else:
+        removed_item = cart.pop()
+        print("Removed", removed_item[0], "from cart")
+
+def display_cart():
+    if not cart:
+        print("Your cart is empty")
+    else:
+        print("Your cart:")
+        total_price = 0
+        for item, price in reversed(cart):
+            total_price += price
+            print(" |", item, "| Price:", price)
+        print("Total Price:", total_price)
+
+print("\n\t MARKET MART SYSTEM")
+print("\n\t--------------------------------")
+print("\n\t 1. Add to Cart\n\t 2. Remove from Cart\n\t 3. Display Cart\n\t 4. Checkout")
+
+while True:
+    choice = int(input("\n Enter the Choice: "))
+    if choice == 1:
+        add_to_cart()
+    elif choice == 2:
+        remove_from_cart()
+    elif choice == 3:
+        display_cart()
+    elif choice == 4:
+        print("\n\t Thank you for shopping with us! Have a great day!")
+        break
+    else:
+        print("\n\t Please Enter a Valid Choice (1/2/3/4)")
